@@ -1,24 +1,28 @@
 package eatseasyspring.eatseasyspring.model;
 
-public class User {
+import java.io.Serializable;
+
+/*
+JavaBean:
+----------------------------------------------
+1. Must have a public no-argument c'tor
+2. 'Get', 'set' and 'is' for all attributes
+3. Should implement the Serializable interface
+ */
+
+public class User implements Serializable {
 
     private long id;
 
     private String name;
 
-    private int age;
-
-    private double salary;
-
     public User(){
         id=0;
     }
 
-    public User(long id, String name, int age, double salary){
+    public User(long id, String name){
         this.id = id;
         this.name = name;
-        this.age = age;
-        this.salary = salary;
     }
 
     public long getId() {
@@ -35,22 +39,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     @Override
@@ -77,9 +65,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", age=" + age
-                + ", salary=" + salary + "]";
+        return "User [id=" + id + ", name=" + name + "]";
     }
-
-
 }

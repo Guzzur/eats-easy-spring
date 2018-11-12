@@ -1,7 +1,6 @@
 package eatseasyspring.eatseasyspring.controller;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import eatseasyspring.eatseasyspring.model.User;
 import eatseasyspring.eatseasyspring.service.UserServiceInterface;
 import eatseasyspring.eatseasyspring.util.CustomErrorType;
@@ -87,8 +85,6 @@ public class RestApiController {
         }
 
         currentUser.setName(user.getName());
-        currentUser.setAge(user.getAge());
-        currentUser.setSalary(user.getSalary());
 
         userService.updateUser(currentUser);
         return new ResponseEntity<User>(currentUser, HttpStatus.OK);

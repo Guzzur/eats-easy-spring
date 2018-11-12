@@ -1,8 +1,6 @@
 package eatseasyspring.eatseasyspring.service;
 
-
 import java.util.List;
-
 import eatseasyspring.eatseasyspring.model.User;
 
 public interface UserServiceInterface {
