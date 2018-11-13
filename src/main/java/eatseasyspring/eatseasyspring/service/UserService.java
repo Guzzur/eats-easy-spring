@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import eatseasyspring.eatseasyspring.model.User;
 
 
-@Service("userService")
-public class UserService implements UserServiceInterface{
+@Service("UserServiceInterface")
+public class UserService implements UserServiceInterface {
 
     private static final AtomicLong counter = new AtomicLong();
 

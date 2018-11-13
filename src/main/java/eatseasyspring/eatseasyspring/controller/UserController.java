@@ -1,17 +1,15 @@
 package eatseasyspring.eatseasyspring.controller;
 
 import java.util.List;
+
+import eatseasyspring.eatseasyspring.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import eatseasyspring.eatseasyspring.model.User;
 import eatseasyspring.eatseasyspring.service.UserServiceInterface;
@@ -28,19 +26,19 @@ public class UserController {
 
     // -------------------Retrieve All Users---------------------------------------------
 
-    @RequestMapping(value = "/user/", method = RequestMethod.GET)
+    @GetMapping("/user/")
     public ResponseEntity<List<User>> listAllUsers() {
         List<User> users = userService.findAllUsers();
-        if (users.isEmpty()) {
+        if (users == null || users.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
+            // You may decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
 
     // -------------------Retrieve Single User------------------------------------------
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @GetMapping("/user/{id}")
     public ResponseEntity<?> getUser(@PathVariable("id") long id) {
         logger.info("Fetching User with id {}", id);
         User user = userService.findById(id);
@@ -54,14 +52,14 @@ public class UserController {
 
     // -------------------Create a User-------------------------------------------
 
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    @PostMapping("/user/")
     public ResponseEntity<?> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
         logger.info("Creating User : {}", user);
 
         if (userService.isUserExist(user)) {
             logger.error("Unable to create. A User with name {} already exist", user.getName());
             return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " +
-                    user.getName() + " already exist."),HttpStatus.CONFLICT);
+                    user.getName() + " already exist."), HttpStatus.CONFLICT);
         }
         userService.saveUser(user);
 
@@ -72,7 +70,7 @@ public class UserController {
 
     // ------------------- Update a User ------------------------------------------------
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    @PutMapping("/user/{id}")
     public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         logger.info("Updating User with id {}", id);
 
@@ -80,8 +78,8 @@ public class UserController {
 
         if (currentUser == null) {
             logger.error("Unable to update. User with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Unable to upate. User with id " + id + " not found."),
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new CustomErrorType("Unable to update. User with id " + id +
+                    " not found."), HttpStatus.NOT_FOUND);
         }
 
         currentUser.setName(user.getName());
@@ -92,15 +90,15 @@ public class UserController {
 
     // ------------------- Delete a User-----------------------------------------
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
         logger.info("Fetching & Deleting User with id {}", id);
 
         User user = userService.findById(id);
         if (user == null) {
             logger.error("Unable to delete. User with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id + " not found."),
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id +
+                    " not found."), HttpStatus.NOT_FOUND);
         }
         userService.deleteUserById(id);
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
@@ -108,7 +106,7 @@ public class UserController {
 
     // ------------------- Delete All Users-----------------------------
 
-    @RequestMapping(value = "/user/", method = RequestMethod.DELETE)
+    @DeleteMapping("/user/")
     public ResponseEntity<User> deleteAllUsers() {
         logger.info("Deleting All Users");
 
