@@ -19,9 +19,9 @@ import eatseasyspring.eatseasyspring.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/api")
-public class RestApiController {
+public class UserController {
 
-    public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
+    public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     UserServiceInterface userService; //Service which will do all data retrieval/manipulation work
@@ -115,5 +115,4 @@ public class RestApiController {
         userService.deleteAllUsers();
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
-
 }
