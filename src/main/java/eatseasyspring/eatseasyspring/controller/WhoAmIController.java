@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class WhoAmIController {
+    String version = "V0.0.1";
+
     @GetMapping("/whoami")
     public String whoAmI(){
-        return "Hello World!";
+        return "{\"appName\": \"EatsEasyApi\", \"version\": \"" + version + "\"}";
     }
 }

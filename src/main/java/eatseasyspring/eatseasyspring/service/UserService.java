@@ -1,7 +1,6 @@
 package eatseasyspring.eatseasyspring.service;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Service;
 import eatseasyspring.eatseasyspring.model.User;
@@ -12,7 +11,7 @@ public class UserService implements UserServiceInterface {
 
     private static final AtomicLong counter = new AtomicLong();
 
-    private static List<User> users;
+    private static List<User> users = new ArrayList<>();
 
     public List<User> findAllUsers() {
         return users;
