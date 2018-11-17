@@ -1,0 +1,5 @@
+INSERT INTO restaurant VALUES ('Munch') ON CONFLICT DO NOTHING;
+
+
+
+
