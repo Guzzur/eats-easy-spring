@@ -10,10 +10,10 @@ public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dishID")
-    private int restaurantId;
+    private int dishId;
 
     @Column(name = "dishName")
-    private String restaurantName;
+    private String dishName;
 
     @ManyToOne
     @JoinColumn(name = "RestaurantId")

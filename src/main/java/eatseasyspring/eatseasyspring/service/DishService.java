@@ -24,10 +24,11 @@ public class DishService {
     }
 */
 
-   public List<Dish> getMenu (int RestaurantID)
+/*   public List<Dish> getMenu (int RestaurantID)
     {
-        //List<Dish> menu = DishRepository.findDishByRestaurantId(RestaurantID);
+        List<Dish> menu = DishRepository.findDishByRestaurantId(RestaurantID);
         List<Dish> menu = DishRepository.findDishesByRestaurantId(RestaurantID);
         return menu;
     }
+*/
 }

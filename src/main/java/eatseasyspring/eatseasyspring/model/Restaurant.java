@@ -13,6 +13,12 @@ public class Restaurant {
     @Column(name = "restaurantID")
     private int restaurantId;
 
+
     @Column(name = "restaurantName")
     private String restaurantName;
+
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
 }

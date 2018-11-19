@@ -13,9 +13,9 @@ import java.util.*;
 @Repository
 public interface DishRepo extends JpaRepository<Dish,Integer> {
 
-   // @Query("select t FROM Dish where t.RestaurantID = :id")
-  //  List<Dish> getAllMenuItemsFromRestaurantId(@Param("id") int id);
+/*    @Query("select t FROM Dish where t.RestaurantID = :id")
+    List<Dish> getAllMenuItemsFromRestaurantId(@Param("id") int id);
 
-    //List<Dish> findDishByRestaurantId(int RestaurantID);
-    List<Dish> findDishesByRestaurantId(int RestaurantID);
+    List<Dish> findDishByRestaurantId(int RestaurantID);*/
+   // List<Dish> findDishesByRestaurantId(int RestaurantID);
 }
