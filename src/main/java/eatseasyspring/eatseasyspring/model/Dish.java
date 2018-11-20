@@ -7,15 +7,34 @@ import javax.persistence.*;
 @Table(name = "dish")
 public class Dish {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "dishID")
-    private int dishId;
+    @Column(name = "dishid")
+    private int dishid;
 
-    @Column(name = "dishName")
-    private String dishName;
+    @Column(name = "dish_name")
+    private String dish_name;
 
     @ManyToOne
-    @JoinColumn(name = "RestaurantId")
+    @JoinColumn(name = "dish_restid")
     private Restaurant restaurant;
+
+
+    public int getDishid() {
+        return dishid;
+    }
+
+    public void setDishid(int dishid) {
+        this.dishid = dishid;
+    }
+
+    public String getDish_name() {
+        return dish_name;
+    }
+
+    public void setDish_name(String dish_name) {
+        this.dish_name = dish_name;
+    }
+
 }

@@ -10,7 +10,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "restaurantID")
+    @Column(name = "restaurantid")
     private int restaurantId;
 
 

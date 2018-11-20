@@ -17,12 +17,17 @@ public class DishService {
     @Autowired
     private DishRepo DishRepository;
 
-   /* public List<Dish> getMenu(int restaurantId) {
+/*public List<Dish> getMenu(Restaurant restaurant) {
+    return DishRepository.findDishesByRestaurant(restaurant);*/
+
+}
+
+  /*  public List<Dish> getMenu(int restaurantId) {
         List<Dish> menu = new ArrayList<>();
         DishRepository.getAllMenuItemsFromRestaurantId(restaurantId).forEach(menu::add);
         return menu;
-    }
-*/
+    }*/
+
 
 /*   public List<Dish> getMenu (int RestaurantID)
     {
@@ -31,4 +36,4 @@ public class DishService {
         return menu;
     }
 */
-}
+
