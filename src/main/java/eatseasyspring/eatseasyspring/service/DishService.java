@@ -16,24 +16,8 @@ public class DishService {
     private RestaurantRepo RestaurantRepository;
     @Autowired
     private DishRepo DishRepository;
-
-/*public List<Dish> getMenu(Restaurant restaurant) {
-    return DishRepository.findDishesByRestaurant(restaurant);*/
-
 }
 
-  /*  public List<Dish> getMenu(int restaurantId) {
-        List<Dish> menu = new ArrayList<>();
-        DishRepository.getAllMenuItemsFromRestaurantId(restaurantId).forEach(menu::add);
-        return menu;
-    }*/
 
 
-/*   public List<Dish> getMenu (int RestaurantID)
-    {
-        List<Dish> menu = DishRepository.findDishByRestaurantId(RestaurantID);
-        List<Dish> menu = DishRepository.findDishesByRestaurantId(RestaurantID);
-        return menu;
-    }
-*/
 

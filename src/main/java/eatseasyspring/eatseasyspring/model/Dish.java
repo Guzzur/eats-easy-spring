@@ -9,7 +9,7 @@ public class Dish {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dishid")
     private int dishid;
 
@@ -19,7 +19,15 @@ public class Dish {
     @ManyToOne
     @JoinColumn(name = "dish_restid")
     private Restaurant restaurant;
+    //private int restid;
 
+
+   public Dish() {};
+
+    public Dish(String dish_name, Restaurant restaurant) {
+        this.dish_name = dish_name;
+        this.restaurant = restaurant;
+    }
 
     public int getDishid() {
         return dishid;
@@ -37,4 +45,11 @@ public class Dish {
         this.dish_name = dish_name;
     }
 
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }

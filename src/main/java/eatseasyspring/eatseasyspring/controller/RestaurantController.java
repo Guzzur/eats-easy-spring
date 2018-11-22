@@ -34,11 +34,26 @@ public class RestaurantController {
 
     @GetMapping(value="restaurants/menu/{id}")
     public List<Dish> getMenu(@PathVariable("id") int id) {
-       return dishRepo.findDishesByRestaurant_RestaurantId(id);
-
-
-       //return  dishRepo.findDishesByRestaurant_RestaurantName("Becky Please");
-        //return dishRepo.findDishByRestaurant_RestaurantId(id);
+        return dishRepo.findDishesByRestaurant_RestaurantId(id);
     }
+
+
+
+    //this is a template of how we could potentially add an instance to a table
+    //using a non default constructor would be quicker
+    /*@GetMapping(value="restaurants/dish")
+     public Dish adddish() {
+            Optional<Restaurant> rest = restRepo.findById(1);
+            Restaurant rest2 = rest.get();
+            Dish dish = new Dish();
+            dish.setDishid(6);
+            dish.setRestaurant(rest2);
+            dish.setDish_name("whatever mate");
+           // Dish dish = new Dish("whatever",rest2);
+            dishRepo.save(dish);
+            return dish;
+            }*/
+
+
 
 }
