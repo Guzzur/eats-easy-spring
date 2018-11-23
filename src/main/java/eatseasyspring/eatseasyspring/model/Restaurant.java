@@ -5,12 +5,12 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 public class Restaurant {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "restaurantid")
+    @Column(name = "rest_id")
     private int restaurantId;
 
 
