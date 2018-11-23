@@ -22,22 +22,15 @@ public class RestaurantController {
     @Autowired
     private DishRepo dishRepo;
 
-
-
     @GetMapping(value="restaurants")
-    public Iterable<Restaurant> getAllRestaurants()
-    {
+    public Iterable<Restaurant> getAllRestaurants() {
         return restRepo.findAll();
     }
-
-
 
     @GetMapping(value="restaurants/menu/{id}")
     public List<Dish> getMenu(@PathVariable("id") int id) {
         return dishRepo.findDishesByRestaurant_RestaurantId(id);
     }
-
-
 
     //this is a template of how we could potentially add an instance to a table
     //using a non default constructor would be quicker
@@ -53,7 +46,4 @@ public class RestaurantController {
             dishRepo.save(dish);
             return dish;
             }*/
-
-
-
 }
