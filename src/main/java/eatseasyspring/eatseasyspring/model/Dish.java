@@ -2,47 +2,45 @@ package eatseasyspring.eatseasyspring.model;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "dishes")
 public class Dish {
 
-
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dish_id")
-    private int dishid;
+    private int dishId;
 
     @Column(name = "dish_name")
-    private String dish_name;
+    private String dishName;
 
     @ManyToOne
     @JoinColumn(name = "dish_restid")
     private Restaurant restaurant;
-    //private int restid;
+    //private int restId;
 
+    public Dish() {
+    }
 
-   public Dish() {};
-
-    public Dish(String dish_name, Restaurant restaurant) {
-        this.dish_name = dish_name;
+    public Dish(String dishName, Restaurant restaurant) {
+        this.dishName = dishName;
         this.restaurant = restaurant;
     }
 
-    public int getDishid() {
-        return dishid;
+    public int getDishId() {
+        return dishId;
     }
 
-    public void setDishid(int dishid) {
-        this.dishid = dishid;
+    public void setDishId(int dishId) {
+        this.dishId = dishId;
     }
 
-    public String getDish_name() {
-        return dish_name;
+    public String getDishName() {
+        return dishName;
     }
 
-    public void setDish_name(String dish_name) {
-        this.dish_name = dish_name;
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
     }
 
     public Restaurant getRestaurant() {
