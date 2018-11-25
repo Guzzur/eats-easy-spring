@@ -14,7 +14,7 @@ public class Restaurant {
     private int restaurantId;
 
 
-    @Column(name = "restaurantName")
+    @Column(name = "restaurant_name")
     private String restaurantName;
 
 
