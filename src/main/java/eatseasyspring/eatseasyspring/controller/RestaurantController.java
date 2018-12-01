@@ -32,8 +32,8 @@ public class RestaurantController {
         return dishRepo.findDishesByRestaurant_RestaurantId(id);
     }
 
-    //this is a template of how we could potentially add an instance to a table
-    //using a non default constructor would be quicker
+    // this is a template of how we could potentially add an instance to a table
+    // using a non default constructor would be quicker
     @PostMapping(value = "restaurants/{id}/dish")
     public Dish addDish(@PathVariable("id") int id, @RequestBody Dish dish) {
         Optional<Restaurant> rest = restRepo.findById(id);
