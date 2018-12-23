@@ -1,8 +1,6 @@
 package eatseasyspring.eatseasyspring.util;
 
-
 public class CustomErrorType {
-
     private String errorMessage;
 
     public CustomErrorType(String errorMessage){
@@ -12,5 +10,4 @@ public class CustomErrorType {
     public String getErrorMessage() {
         return errorMessage;
     }
-
 }

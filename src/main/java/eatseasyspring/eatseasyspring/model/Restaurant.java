@@ -9,14 +9,18 @@ import javax.persistence.*;
 public class Restaurant {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "rest_id")
     private int restaurantId;
 
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "restaurant_name")
-    private String restaurantName;
+    @Column(name = "gps_point")
+    private int gpsPoint;
 
+    @Column(name = "address")
+    private String address;
 
     public int getRestaurantId() {
         return restaurantId;
@@ -26,11 +30,27 @@ public class Restaurant {
         this.restaurantId = restaurantId;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
+    public String getName() {
+        return name;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGpsPoint() {
+        return gpsPoint;
+    }
+
+    public void setGpsPoint(int gpsPoint) {
+        this.gpsPoint = gpsPoint;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
