@@ -13,7 +13,7 @@ import java.util.*;
 @CrossOrigin(origins = "*")
 @RestController
 public class WhoAmIController {
-    private WhoAmI version = new WhoAmI(0, 1, 1);
+    private WhoAmI version = new WhoAmI(0, 1, 2);
 
     @GetMapping(value = "whoami")
     public WhoAmI getVersion() {
