@@ -22,7 +22,7 @@ public class Dish {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "rest_id")
     private int restId;
 
