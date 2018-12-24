@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 
-@RequestMapping("/api")
+@RequestMapping("/api/whoami")
 @CrossOrigin(origins = "*")
 @RestController
 public class WhoAmIController {
     private WhoAmI version = new WhoAmI(0, 1, 2);
 
-    @GetMapping(value = "whoami")
+    @GetMapping(value = "")
     public WhoAmI getVersion() {
         return this.version;
     }
