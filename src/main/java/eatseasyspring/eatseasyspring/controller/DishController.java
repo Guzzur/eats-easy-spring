@@ -10,7 +10,7 @@ import eatseasyspring.eatseasyspring.repository.DishRepo;
 import eatseasyspring.eatseasyspring.model.Restaurant;
 import eatseasyspring.eatseasyspring.repository.RestaurantRepo;
 
-@RequestMapping("/api/dishes")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 @RestController
 public class DishController {
@@ -21,23 +21,23 @@ public class DishController {
     private DishRepo dishRepo;
 
     // GET routes
-    @GetMapping(value = "")
+    @GetMapping(value = "dishes")
     public List<Dish> getAllDishes() {
         return dishRepo.findAll();
     }
 
-    @GetMapping(value = "/{dishId}")
+    @GetMapping(value = "dishes/{dishId}")
     public Optional<Dish> getDishById(@PathVariable("dishId") int dishId) {
         return dishRepo.findById(dishId);
     }
 
-    @GetMapping(value = "/menu/{restId}")
+    @GetMapping(value = "dishes/menu/{restId}")
     public List<Dish> getMenu(@PathVariable("restId") int restId) {
-        return dishRepo.findDishesByRestaurant_RestaurantId(restId);
+        return dishRepo.findDishesByRestId(restId);
     }
 
     // POST routes
-    @PostMapping(value = "")
+    @PostMapping(value = "dishes")
     public Dish addDish(@RequestBody Dish dish) {
         return dishRepo.save(dish);
     }
