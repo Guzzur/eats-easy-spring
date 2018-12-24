@@ -20,7 +20,7 @@ public class RestaurantController {
         return restRepo.findAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{restId}")
     public Optional<Restaurant> getRestaurantById(@PathVariable("restId") int restId) {
         return restRepo.findById(restId);
     }

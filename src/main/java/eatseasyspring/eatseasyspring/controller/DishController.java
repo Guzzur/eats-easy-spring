@@ -39,7 +39,6 @@ public class DishController {
     // POST routes
     @PostMapping(value = "")
     public Dish addDish(@RequestBody Dish dish) {
-        Optional<Restaurant> rest = restRepo.findById(dish.getRestId());
         return dishRepo.save(dish);
     }
 }
