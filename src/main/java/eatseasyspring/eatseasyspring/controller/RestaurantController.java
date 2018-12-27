@@ -15,6 +15,7 @@ public class RestaurantController {
     @Autowired
     private RestaurantRepo restRepo;
 
+    // GET routes
     @GetMapping(value = "restaurants")
     public Iterable<Restaurant> getAllRestaurants() {
         return restRepo.findAll();
@@ -24,4 +25,11 @@ public class RestaurantController {
     public Optional<Restaurant> getRestaurantById(@PathVariable("restId") int restId) {
         return restRepo.findById(restId);
     }
+
+    // POST routes
+    @PostMapping(value = "restaurants")
+    public Restaurant addRest(@RequestBody Restaurant rest) {
+        return restRepo.save(rest);
+    }
+
 }

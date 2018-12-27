@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "dishes")
 public class Dish {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "dish_id")
     private int dishId;
 
@@ -14,9 +14,9 @@ public class Dish {
     private String dishName;
 
     @Column(name = "price")
-    private int price;
+    private float price;
 
-    @Column(name = "description")
+    @Column(name = "dish_description")
     private String description;
 
     @Column(name = "image_url")
@@ -42,11 +42,11 @@ public class Dish {
         this.dishName = dishName;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
