@@ -1,6 +1,8 @@
 package eatseasyspring.eatseasyspring.controller;
 
 import java.util.*;
+
+import eatseasyspring.eatseasyspring.model.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ import eatseasyspring.eatseasyspring.repository.RestaurantRepo;
 public class RestaurantController {
     @Autowired
     private RestaurantRepo restRepo;
+    @Autowired
+    private DishRepo dishRepo;
 
     // GET routes
     @GetMapping(value = "restaurants")
@@ -24,6 +28,11 @@ public class RestaurantController {
     @GetMapping(value = "restaurants/{restId}")
     public Optional<Restaurant> getRestaurantById(@PathVariable("restId") int restId) {
         return restRepo.findById(restId);
+    }
+
+    @GetMapping(value = "restaurants/{restId}/menu")
+    public List<Dish> getMenu(@PathVariable("restId") int restId) {
+        return dishRepo.findDishesByRestId(restId);
     }
 
     // POST routes

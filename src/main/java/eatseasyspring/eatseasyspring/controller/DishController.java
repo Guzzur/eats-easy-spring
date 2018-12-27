@@ -31,11 +31,6 @@ public class DishController {
         return dishRepo.findById(dishId);
     }
 
-    @GetMapping(value = "dishes/menu/{restId}")
-    public List<Dish> getMenu(@PathVariable("restId") int restId) {
-        return dishRepo.findDishesByRestId(restId);
-    }
-
     // POST routes
     @PostMapping(value = "dishes")
     public Dish addDish(@RequestBody Dish dish) {
