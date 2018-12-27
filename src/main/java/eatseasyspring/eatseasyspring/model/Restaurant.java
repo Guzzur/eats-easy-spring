@@ -1,26 +1,30 @@
 package eatseasyspring.eatseasyspring.model;
 
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "restaurants")
 public class Restaurant {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="restaurants_rest_id_gen", sequenceName="restaurants_rest_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="restaurants_rest_id_gen")
     @Column(name = "rest_id")
     private int restaurantId;
 
-    @Column(name = "name")
+    @Column(name = "rest_name")
     private String name;
 
-    @Column(name = "gps_point")
-    private int gpsPoint;
+    @Column(name = "gps_lat")
+    private float gpsLat;
 
-    @Column(name = "address")
+    @Column(name = "gps_lon")
+    private float gpsLon;
+
+    @Column(name = "rest_address")
     private String address;
+
+    @Column(name = "rest_type")
+    private String restTypes;
 
     public int getRestaurantId() {
         return restaurantId;
@@ -38,12 +42,20 @@ public class Restaurant {
         this.name = name;
     }
 
-    public int getGpsPoint() {
-        return gpsPoint;
+    public float getGpsLat() {
+        return gpsLat;
     }
 
-    public void setGpsPoint(int gpsPoint) {
-        this.gpsPoint = gpsPoint;
+    public void setGpsLat(float gpsLat) {
+        this.gpsLat = gpsLat;
+    }
+
+    public float getGpsLon() {
+        return gpsLon;
+    }
+
+    public void setGpsLon(float gpsLon) {
+        this.gpsLon = gpsLon;
     }
 
     public String getAddress() {
@@ -52,5 +64,13 @@ public class Restaurant {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getRestTypes() {
+        return restTypes;
+    }
+
+    public void setRestTypes(String restTypes) {
+        this.restTypes = restTypes;
     }
 }
