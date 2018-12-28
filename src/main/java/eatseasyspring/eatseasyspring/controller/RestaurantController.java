@@ -1,9 +1,11 @@
 package eatseasyspring.eatseasyspring.controller;
 
 import java.util.*;
+import java.net.URI;
 
 import eatseasyspring.eatseasyspring.model.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import eatseasyspring.eatseasyspring.repository.DishRepo;
@@ -37,8 +39,21 @@ public class RestaurantController {
 
     // POST routes
     @PostMapping(value = "restaurants")
-    public Restaurant addRest(@RequestBody Restaurant rest) {
-        return restRepo.save(rest);
+    public Restaurant addRest(@RequestBody Restaurant restaurant) {
+        return restRepo.save(restaurant);
     }
 
+    // PUT routes
+    @PutMapping(value = "restaurants/{restId}")
+    public ResponseEntity<Restaurant> updateRest(@RequestBody Restaurant restaurant, @PathVariable int restId) {
+        Optional<Restaurant> restaurantOptional = restRepo.findById(restId);
+
+        if(!restaurantOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        restaurant.setRestaurantId(restId);
+        restRepo.save(restaurant);
+
+        return ResponseEntity.ok(restaurant);
+    }
 }
