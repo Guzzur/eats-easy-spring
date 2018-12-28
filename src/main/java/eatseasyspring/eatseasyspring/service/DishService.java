@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class DishService {
     @Autowired
-    private RestaurantRepo RestaurantRepository;
+    private RestaurantRepo restRepo;
 
     @Autowired
-    private DishRepo DishRepository;
+    private DishRepo dishRepo;
 }
 
 

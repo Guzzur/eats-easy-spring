@@ -3,10 +3,11 @@ package eatseasyspring.eatseasyspring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="users_user_id_gen", sequenceName="users_user_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="users_user_id_gen")
     @Column(name = "user_id")
     private int userID;
 
