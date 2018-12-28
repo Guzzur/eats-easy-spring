@@ -1,6 +1,7 @@
 package eatseasyspring.eatseasyspring.model;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
