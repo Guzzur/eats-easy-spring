@@ -3,7 +3,7 @@ package eatseasyspring.eatseasyspring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "restaurants")
+@Table(name = "Restaurants")
 public class Restaurant {
     @Id
     @SequenceGenerator(name="restaurants_rest_id_gen", sequenceName="restaurants_rest_id_seq")
