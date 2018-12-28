@@ -56,4 +56,10 @@ public class RestaurantController {
 
         return ResponseEntity.ok(restaurant);
     }
+
+    // DELETE routes
+    @DeleteMapping(value = "restaurants/{restId}")
+    public void deleteRest(@PathVariable int restId) {
+        restRepo.deleteById(restId);
+    }
 }
