@@ -14,17 +14,20 @@ public class Restaurant {
     @Column(name = "rest_name")
     private String name;
 
-    @Column(name = "gps_lat")
-    private float gpsLat;
-
-    @Column(name = "gps_lon")
-    private float gpsLon;
-
     @Column(name = "rest_address")
     private String address;
 
-    @Column(name = "rest_type")
-    private String restTypes;
+    @Column(name = "rest_filterable_data")
+    private RestFilterableData restFilterableData;
+
+    public RestFilterableData getRestFilterableData() {
+        return restFilterableData;
+    }
+
+    public void setRestFilterableData(RestFilterableData restFilterableData) {
+        this.restFilterableData = restFilterableData;
+    }
+
 
     public int getRestaurantId() {
         return restaurantId;
@@ -42,22 +45,6 @@ public class Restaurant {
         this.name = name;
     }
 
-    public float getGpsLat() {
-        return gpsLat;
-    }
-
-    public void setGpsLat(float gpsLat) {
-        this.gpsLat = gpsLat;
-    }
-
-    public float getGpsLon() {
-        return gpsLon;
-    }
-
-    public void setGpsLon(float gpsLon) {
-        this.gpsLon = gpsLon;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -66,11 +53,4 @@ public class Restaurant {
         this.address = address;
     }
 
-    public String getRestTypes() {
-        return restTypes;
-    }
-
-    public void setRestTypes(String restTypes) {
-        this.restTypes = restTypes;
-    }
 }
