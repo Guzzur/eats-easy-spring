@@ -1,10 +1,13 @@
 package eatseasyspring.eatseasyspring.controller;
 
 import java.util.*;
-import java.net.URI;
 
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 import eatseasyspring.eatseasyspring.model.Dish;
+import eatseasyspring.eatseasyspring.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +23,20 @@ public class RestaurantController {
     private RestaurantRepo restRepo;
     @Autowired
     private DishRepo dishRepo;
+    @Autowired
+    private RestaurantService restaurantService;
 
     // GET routes
     @GetMapping(value = "restaurants")
     public Iterable<Restaurant> getAllRestaurants() {
         return restRepo.findAll();
+    }
+
+    @GetMapping(value = "restaurants/filtered")
+    public List<Restaurant> findAllByRsql(@RequestParam(value = "search") String search) {
+        Node rootNode = new RSQLParser().parse(search);
+        Specification<Restaurant> spec = rootNode.accept(new CustomRsqlVisitor<Restaurant>());
+        return restRepo.findAll(spec);
     }
 
     @GetMapping(value = "restaurants/{restId}")
