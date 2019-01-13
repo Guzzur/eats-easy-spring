@@ -1,14 +1,29 @@
 package eatseasyspring.eatseasyspring.model;
 
+
+
 import javax.persistence.Embeddable;
+
 import java.util.List;
+
+
 
 @Embeddable
 public class RestFilterableData {
 
     private float gpsLat;
     private float gpsLon;
-   // private List<String> restTypes;
+    private List<String> restTypes;
+
+    public List<String> getRestTypes() {
+        return restTypes;
+    }
+
+    public void setRestTypes(List<String> restTypes) {
+        this.restTypes = restTypes;
+    }
+
+
 
 /*    public RestFilterableData(float gpsLat, float gpsLon, List<String> restTypes) {
         this.gpsLat = gpsLat;
@@ -31,9 +46,7 @@ public class RestFilterableData {
         this.gpsLon = gpsLon;
     }
 
-/*    public void setRestTypes(List<String> restTypes) {
-        this.restTypes = restTypes;
-    }*/
+
 
     public float getGpsLat() {
         return gpsLat;
@@ -43,7 +56,5 @@ public class RestFilterableData {
         return gpsLon;
     }
 
-/*    public List<String> getRestTypes() {
-        return restTypes;
-    }*/
+
 }

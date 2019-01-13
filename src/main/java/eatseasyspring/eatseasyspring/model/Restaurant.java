@@ -17,6 +17,7 @@ public class Restaurant {
     @Column(name = "rest_address")
     private String address;
 
+    @Embedded
     @Column(name = "rest_filterable_data")
     private RestFilterableData restFilterableData;
 
