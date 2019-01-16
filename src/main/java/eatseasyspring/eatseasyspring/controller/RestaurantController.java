@@ -35,13 +35,14 @@ public class RestaurantController {
     EntityManager manager;
     RSQLVisitor<CriteriaQuery<Restaurant>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Restaurant>();
 
+
     // GET routes
     @GetMapping(value = "restaurants")
     public Iterable<Restaurant> getAllRestaurants() {
         return restRepo.findAll();
     }
 
-    @GetMapping(value = "restaurants/filtered/")
+    @GetMapping(value = "restaurants/filtered")
     public List<Restaurant> findAllByRsql(@RequestParam(value = "search") String search) {
 
     // Parse a RSQL into a Node
