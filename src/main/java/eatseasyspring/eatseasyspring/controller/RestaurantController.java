@@ -18,6 +18,7 @@ import eatseasyspring.eatseasyspring.model.Restaurant;
 import eatseasyspring.eatseasyspring.repository.RestaurantRepo;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
 @RequestMapping("/api")
@@ -31,7 +32,7 @@ public class RestaurantController {
     @Autowired
     private RestaurantService restaurantService;
 
-
+    @PersistenceContext
     EntityManager manager;
     RSQLVisitor<CriteriaQuery<Restaurant>, EntityManager> visitor = new JpaCriteriaQueryVisitor<Restaurant>();
 
