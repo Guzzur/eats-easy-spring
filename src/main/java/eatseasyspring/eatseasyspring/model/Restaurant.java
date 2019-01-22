@@ -42,13 +42,6 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public float getGpsLat() {
         return gpsLat;
@@ -66,11 +59,20 @@ public class Restaurant {
         this.gpsLon = gpsLon;
     }
 
-    public String getRestType() {
-        return restType;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRestType(String restType) {
-        this.restType = restType;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRestTypes() {
+        return restTypes;
+    }
+
+    public void setRestTypes(String restTypes) {
+        this.restTypes = restTypes;
+
     }
 }
