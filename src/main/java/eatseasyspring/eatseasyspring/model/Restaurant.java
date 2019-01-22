@@ -14,17 +14,17 @@ public class Restaurant {
     @Column(name = "rest_name")
     private String name;
 
+    @Column(name = "rest_address")
+    private String address;
+
     @Column(name = "gps_lat")
     private float gpsLat;
 
     @Column(name = "gps_lon")
     private float gpsLon;
 
-    @Column(name = "rest_address")
-    private String address;
-
     @Column(name = "rest_type")
-    private String restTypes;
+    private String restType;
 
     public int getRestaurantId() {
         return restaurantId;
@@ -41,6 +41,7 @@ public class Restaurant {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public float getGpsLat() {
         return gpsLat;
@@ -72,5 +73,6 @@ public class Restaurant {
 
     public void setRestTypes(String restTypes) {
         this.restTypes = restTypes;
+
     }
 }
