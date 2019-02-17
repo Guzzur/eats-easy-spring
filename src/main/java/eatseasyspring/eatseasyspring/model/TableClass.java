@@ -6,11 +6,10 @@ import javax.persistence.*;
 @Table(name = "TablesData")
 public class TableClass {
     @Id
-    @SequenceGenerator(name="tables_table_id_gen", sequenceName="tables_table_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="tables_table_id_gen")
+    @SequenceGenerator(name="table_id_gen", sequenceName="table_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="table_id_gen")
     @Column(name = "table_id")
     private int tableId;
-
 
     //@ManyToOne
     @JoinColumn(name = "rest_id")
