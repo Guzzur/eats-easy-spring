@@ -11,12 +11,13 @@ public class TableClass {
     @Column(name = "table_id")
     private int tableId;
 
-    @Column(name = "table_code_name")
-    private String tableCodeName;
 
     //@ManyToOne
     @JoinColumn(name = "rest_id")
     private int restId;
+
+    @Column(name = "table_code_name")
+    private String tableCodeName;
 
     public int getTableId() {
         return tableId;
