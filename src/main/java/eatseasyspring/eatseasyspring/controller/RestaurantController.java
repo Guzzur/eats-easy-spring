@@ -55,15 +55,6 @@ public class RestaurantController {
     return manager.createQuery(query).getResultList();
     }
 
-    @GetMapping(value = "restaurants/{restId}")
-    public Optional<Restaurant> getRestaurantById(@PathVariable("restId") int restId) {
-        return restRepo.findById(restId);
-    }
-
-    @GetMapping(value = "restaurants/{restId}/menu")
-    public List<Dish> getMenu(@PathVariable("restId") int restId) {
-        return dishRepo.findDishesByRestId(restId);
-    }
 
     @GetMapping(value = "restaurants/{restId}")
     public Optional<Restaurant> getRestaurantById(@PathVariable("restId") int restId) {

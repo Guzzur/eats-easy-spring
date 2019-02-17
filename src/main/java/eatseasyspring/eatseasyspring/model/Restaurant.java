@@ -24,7 +24,7 @@ public class Restaurant {
     private float gpsLon;
 
     @Column(name = "rest_type")
-    private String restType;
+    private String restTypes;
 
     public int getRestaurantId() {
         return restaurantId;
