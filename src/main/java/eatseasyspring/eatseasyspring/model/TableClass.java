@@ -3,13 +3,16 @@ package eatseasyspring.eatseasyspring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TablesData")
+@Table(name = "tablesdata")
 public class TableClass {
     @Id
-    @SequenceGenerator(name="table_id_gen", sequenceName="table_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="table_id_gen")
+    @SequenceGenerator(name="tablesdata_table_id_gen", sequenceName="tablesdata_table_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="tablesdata_table_id_gen")
+
+   // @Id
     @Column(name = "table_id")
     private int tableId;
+
 
     //@ManyToOne
     @JoinColumn(name = "rest_id")
