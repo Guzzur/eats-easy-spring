@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "Ordersdata")
 public class Order {
     @Id
     @SequenceGenerator(name="orders_order_id_gen", sequenceName="orders_order_id_seq")
