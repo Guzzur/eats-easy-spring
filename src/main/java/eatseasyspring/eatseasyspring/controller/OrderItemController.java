@@ -1,6 +1,5 @@
 package eatseasyspring.eatseasyspring.controller;
 
-import eatseasyspring.eatseasyspring.model.Order;
 import eatseasyspring.eatseasyspring.model.OrderItem;
 import eatseasyspring.eatseasyspring.repository.OrderItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +15,17 @@ import java.util.Optional;
 @RestController
 public class OrderItemController {
     @Autowired
-    private OrderItemRepo orderRepo;
+    private OrderItemRepo orderItemRepo;
 
     // GET routes
     @GetMapping(value = "orderitems")
     public List<OrderItem> getAllOrdersItems() {
-        return orderRepo.findAll();
+        return orderItemRepo.findAll();
     }
 
     // POST routes
     @PostMapping(value = "orderitems")
     public OrderItem addOrderItem(@RequestBody OrderItem orderItem) {
-        return orderRepo.save(orderItem);
+        return orderItemRepo.save(orderItem);
     }
 }
