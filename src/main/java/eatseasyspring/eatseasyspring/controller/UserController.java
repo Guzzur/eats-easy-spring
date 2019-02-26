@@ -34,6 +34,34 @@ public class UserController {
         return userRepo.save(user);
     }
 
+    //signIn returns userId if the user successfully signed in, if user doesn't exist, the return value is -100
+/*
+    @PostMapping(value = "users/signin")
+    public int userSignIn(@RequestBody String phone,String hashedPass) {
+        if (userRepo.findUserByPhoneAndHashedPasswd(phone,hashedPass) == null)
+            return -100;
+        return userRepo.findUserByPhoneAndHashedPasswd(phone,hashedPass).getUserID();
+
+    }
+*/
+
+    @PostMapping(value = "users/signin")
+    public int userSignIn(@RequestBody User user) {
+        if (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()) == null)
+            return -100;
+        return (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()).getUserID());
+
+    }
+
+    //signUp returns userId if the user successfully signed up, if user already exists, the return value is -100
+    @PostMapping(value = "users/signup")
+    public int userSignUp(@RequestBody User user) {
+        if (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()) != null)
+            return -100;
+        return userRepo.save(user).getUserID();
+    }
+
+
     // PUT routes
     @PutMapping(value = "users/{userId}")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable int userId) {
