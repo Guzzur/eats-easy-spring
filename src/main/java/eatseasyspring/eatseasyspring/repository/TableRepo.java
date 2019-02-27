@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TableRepo extends JpaRepository<TableClass, Integer> {
     List<TableClass> findTablesByRestId(int restId);
+    List<TableClass> findAllByRestIdAndUserIdAtTableIsNotNull(int restId);
 }

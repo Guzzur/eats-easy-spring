@@ -10,7 +10,10 @@ import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import cz.jirutka.rsql.parser.ast.RSQLVisitor;
 import eatseasyspring.eatseasyspring.model.Dish;
+import eatseasyspring.eatseasyspring.model.TableClass;
+import eatseasyspring.eatseasyspring.repository.TableRepo;
 import eatseasyspring.eatseasyspring.service.RestaurantService;
+import org.hibernate.annotations.Tables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,8 @@ import javax.persistence.criteria.CriteriaQuery;
 @CrossOrigin(origins = "*")
 @RestController
 public class RestaurantController {
+    @Autowired
+    private TableRepo tableRepo;
     @Autowired
     private RestaurantRepo restRepo;
     @Autowired
@@ -65,6 +70,13 @@ public class RestaurantController {
     public List<Dish> getMenu(@PathVariable("restId") int restId) {
         return dishRepo.findDishesByRestId(restId);
     }
+
+    @GetMapping(value = "restaurants/{restId}/freeTables")
+    public List<TableClass> getFreeTables(@PathVariable("restId") int restId) {
+        //return dishRepo.findDishesByRestId(restId);
+        return tableRepo.findAllByRestIdAndUserIdAtTableIsNotNull(restId);
+    }
+
 
     // POST routes
     @PostMapping(value = "restaurants")

@@ -34,16 +34,6 @@ public class UserController {
         return userRepo.save(user);
     }
 
-    //signIn returns userId if the user successfully signed in, if user doesn't exist, the return value is -100
-/*
-    @PostMapping(value = "users/signin")
-    public int userSignIn(@RequestBody String phone,String hashedPass) {
-        if (userRepo.findUserByPhoneAndHashedPasswd(phone,hashedPass) == null)
-            return -100;
-        return userRepo.findUserByPhoneAndHashedPasswd(phone,hashedPass).getUserID();
-
-    }
-*/
 
     @PostMapping(value = "users/signin")
     public int userSignIn(@RequestBody User user) {

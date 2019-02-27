@@ -19,6 +19,19 @@ public class TableClass {
     @Column(name = "table_code_name")
     private String tableCodeName;
 
+    //@ManyToOne
+    @JoinColumn(name = "userid_at_table")
+    private Integer userIdAtTable;
+
+
+    public Integer getUserIdAtTable() {
+        return userIdAtTable;
+    }
+
+    public void setUserIdAtTable(Integer userIdAtTable) {
+        this.userIdAtTable = userIdAtTable;
+    }
+
     public int getTableId() {
         return tableId;
     }
