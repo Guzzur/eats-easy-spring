@@ -20,7 +20,7 @@ public class TableClass {
     private String tableCodeName;
 
     //@ManyToOne
-    @JoinColumn(name = "userid_at_table")
+    @JoinColumn(name = "user_id_at_table")
     private Integer userIdAtTable;
 
 

@@ -73,8 +73,7 @@ public class RestaurantController {
 
     @GetMapping(value = "restaurants/{restId}/freeTables")
     public List<TableClass> getFreeTables(@PathVariable("restId") int restId) {
-        //return dishRepo.findDishesByRestId(restId);
-        return tableRepo.findAllByRestIdAndUserIdAtTableIsNotNull(restId);
+        return tableRepo.findAllByRestIdAndUserIdAtTableNull(restId);
     }
 
 
