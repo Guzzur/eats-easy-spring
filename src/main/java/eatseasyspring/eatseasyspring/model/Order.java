@@ -13,7 +13,7 @@ public class Order {
     private int orderId;
 
     @Column(name = "order_status")
-    private String orderStatus;
+    private int orderStatus;
 
     @Column(name = "time_received")
     private Date timeReceived;
@@ -41,11 +41,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getOrderStatus() {
+    public int getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(int orderStatus) {
         this.orderStatus = orderStatus;
     }
 
