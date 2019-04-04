@@ -38,7 +38,7 @@ public class UserController {
     @PostMapping(value = "users/signin")
     public int userSignIn(@RequestBody User user) {
         if (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()) == null)
-            return -100;
+            return -99999;
         return (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()).getUserID());
 
     }
@@ -47,7 +47,7 @@ public class UserController {
     @PostMapping(value = "users/signup")
     public int userSignUp(@RequestBody User user) {
         if (userRepo.findUserByPhoneAndHashedPasswd(user.getPhone(),user.getHashedPasswd()) != null)
-            return -100;
+            return -99999;
         return userRepo.save(user).getUserID();
     }
 
