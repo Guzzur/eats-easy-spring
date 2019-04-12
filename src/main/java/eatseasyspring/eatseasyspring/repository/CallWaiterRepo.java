@@ -9,4 +9,5 @@ package eatseasyspring.eatseasyspring.repository;
 
 @Repository
 public interface CallWaiterRepo extends JpaRepository<CallWaiter, Integer> {
+        List<CallWaiter> findCallWaitersByRestId(int restId);
 }

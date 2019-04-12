@@ -9,19 +9,14 @@ import com.github.tennaito.rsql.jpa.JpaCriteriaQueryVisitor;
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import cz.jirutka.rsql.parser.ast.RSQLVisitor;
-import eatseasyspring.eatseasyspring.model.Dish;
-import eatseasyspring.eatseasyspring.model.TableClass;
-import eatseasyspring.eatseasyspring.repository.TableRepo;
+import eatseasyspring.eatseasyspring.model.*;
+import eatseasyspring.eatseasyspring.repository.*;
 import eatseasyspring.eatseasyspring.service.RestaurantService;
 import org.hibernate.annotations.Tables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import eatseasyspring.eatseasyspring.repository.DishRepo;
-import eatseasyspring.eatseasyspring.model.Restaurant;
-import eatseasyspring.eatseasyspring.repository.RestaurantRepo;
 
 
 import javax.persistence.EntityManager;
@@ -34,6 +29,12 @@ import javax.persistence.criteria.CriteriaQuery;
 public class RestaurantController {
     @Autowired
     private TableRepo tableRepo;
+    @Autowired
+    private CallWaiterRepo callWaiterRepo;
+    @Autowired
+    private EmployeeRepo employeeRepo;
+    @Autowired
+    private OrderRepo orderRepo;
     @Autowired
     private RestaurantRepo restRepo;
     @Autowired
@@ -74,6 +75,21 @@ public class RestaurantController {
     @GetMapping(value = "restaurants/{restId}/freeTables")
     public List<TableClass> getFreeTables(@PathVariable("restId") int restId) {
         return tableRepo.findAllByRestIdAndUserIdAtTableNull(restId);
+    }
+
+    @GetMapping(value = "restaurants/{restId}/orders")
+    public List<Order> getRestaurantOrders (@PathVariable("restId") int restId) {
+        return orderRepo.findOrdersByRestId(restId);
+    }
+
+    @GetMapping(value = "restaurants/{userId}/employee")
+    public Optional<Restaurant> getRestaurantByUserId (@PathVariable("userId") int userId) {
+        return getRestaurantById(employeeRepo.findEmployeeByUserId(userId).getRestId());
+    }
+
+    @GetMapping(value = "restaurants/{restId}/serviceCalls")
+    public List<CallWaiter> getServiceCallsByRestId (@PathVariable("restId") int restId) {
+        return callWaiterRepo.findCallWaitersByRestId(restId);
     }
 
 
