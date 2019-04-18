@@ -2,6 +2,8 @@ package eatseasyspring.eatseasyspring.controller;
 
 import eatseasyspring.eatseasyspring.config.Greeting;
 import eatseasyspring.eatseasyspring.config.HelloMessage;
+import eatseasyspring.eatseasyspring.model.CallWaiter;
+import eatseasyspring.eatseasyspring.model.Order;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.*;
@@ -78,12 +80,37 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class WebSocketController {
 
+    @MessageMapping("/socket/orderStatus")
+    @SendTo("/Orders/statusUpdate")
+    public String OrderStatusUpdate(Order order)
+    {
+        return (Integer.toString(order.getOrderId()) + order.getOrderStatus());
+    }
 
-    @MessageMapping("/hello")
+    @MessageMapping("/socket/newOrder")
+    @SendTo("/Orders/new")
+    public int NewOrder(Order order)
+    {
+        return order.getOrderId();
+    }
+
+    @MessageMapping("/socket/newCallWaiter")
+    @SendTo("/CallWaiter/new")
+    public int NewCallWaiter(CallWaiter callWaiter)
+    {
+        return callWaiter.getCallId();
+    }
+
+
+   /* public Greeting greeting(HelloMessage message) throws Exception {
+        Thread.sleep(1000); // simulated delay
+        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");*/
+
+   /* @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
         Thread.sleep(1000); // simulated delay
         return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
-    }
+    }*/
 
 }

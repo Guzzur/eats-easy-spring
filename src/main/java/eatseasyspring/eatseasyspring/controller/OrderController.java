@@ -27,6 +27,23 @@ public class OrderController {
         return orderRepo.findById(orderId);
     }
 
+    //advanceOrderStatus using WS
+    @GetMapping(value = "orders/advanceorderstatus/{orderId}")
+    public Optional<Order> advanceOrderStatus(@PathVariable("orderId") int orderId) {
+
+        Optional<Order> maybeOrder = getOrderById(orderId);
+        if (maybeOrder.isPresent()) {
+            Order order = maybeOrder.get();
+            int orderStatus = order.getOrderStatus();
+            if (orderStatus < 5)
+                orderStatus++;
+            order.setOrderStatus(orderStatus);
+        }
+
+        return orderRepo.findById(orderId);
+    }
+
+
     // POST routes
     @PostMapping(value = "orders")
     public Order addOrder(@RequestBody Order order) {
