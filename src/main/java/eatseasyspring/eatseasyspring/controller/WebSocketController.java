@@ -1,89 +1,20 @@
 package eatseasyspring.eatseasyspring.controller;
 
-import eatseasyspring.eatseasyspring.config.Greeting;
-import eatseasyspring.eatseasyspring.config.HelloMessage;
-import org.hibernate.mapping.Map;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.*;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.messaging.simp.annotation.SendToUser;
-import org.springframework.stereotype.Controller;
-
-import java.security.Principal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
-
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.util.HtmlUtils;
-
-/*@Controller
-public class WebSocketController {
-
-    @Autowired
-    private SimpMessageSendingOperations messagingTemplate;
-
-
-
-    @MessageMapping("/message")
-    @SendToUser("/queue/reply")
-    public String processMessageFromClient(
-            @Payload String message,
-            Principal principal) throws Exception {
-        return "4fd";
-    }
-
-}*/
-
-/*@Controller
-public class WebSocketController {
-
-
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
-    }
-
-}*/
-
-/*
-@Controller
-public class WebSocketController {
-
-    private final SimpMessagingTemplate template;
-
-    @Autowired
-    WebSocketController(SimpMessagingTemplate template){
-        this.template = template;
-    }
-
-    @MessageMapping("/api/send/message")
-    public void onReceivedMesage(String message){
-
-        this.template.convertAndSend("/topic",  message);
-    }
-}*/
-import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
+import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "*")
-@Controller
+@RestController
 public class WebSocketController {
-
-
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+    /*
+     * This MessageMapping annotated method will be handled by
+     * SimpAnnotationMethodMessageHandler and after that the Message will be
+     * forwarded to Broker channel to be forwarded to the client via WebSocket
+     */
+    @MessageMapping("/all")
+    @SendTo("/topic/all")
+    public String post(@Payload String message) {
+        return message;
     }
-
 }
