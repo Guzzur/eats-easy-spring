@@ -5,7 +5,6 @@ import eatseasyspring.eatseasyspring.repository.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +12,9 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RestController
 public class OrderController {
+    @Autowired
+    private SimpMessagingTemplate webSocket;
+  
     @Autowired
     private OrderRepo orderRepo;
 
@@ -47,7 +49,16 @@ public class OrderController {
     // POST routes
     @PostMapping(value = "orders")
     public Order addOrder(@RequestBody Order order) {
-        return orderRepo.save(order);
+        Order saved = orderRepo.save(order);
+
+        String obj = "{";
+        obj += "\n  type: " + "newOrder" + ",";
+        obj += "\n  orderId: " + saved.getOrderId() + ",";
+        obj += "\n  orderStatus: " + saved.getOrderStatus();
+        obj += "\n}";
+
+        this.webSocket.convertAndSend("/topic/all", obj);
+        return saved;
     }
 
     // PUT routes
