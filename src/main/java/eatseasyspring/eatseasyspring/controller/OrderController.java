@@ -4,9 +4,7 @@ import eatseasyspring.eatseasyspring.model.Order;
 import eatseasyspring.eatseasyspring.repository.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +14,7 @@ import java.util.Optional;
 public class OrderController {
     @Autowired
     private SimpMessagingTemplate webSocket;
-
+  
     @Autowired
     private OrderRepo orderRepo;
 
@@ -31,12 +29,27 @@ public class OrderController {
         return orderRepo.findById(orderId);
     }
 
+    //advanceOrderStatus using WS
+    @GetMapping(value = "orders/advanceorderstatus/{orderId}")
+    public Optional<Order> advanceOrderStatus(@PathVariable("orderId") int orderId) {
+
+        Optional<Order> maybeOrder = getOrderById(orderId);
+        if (maybeOrder.isPresent()) {
+            Order order = maybeOrder.get();
+            int orderStatus = order.getOrderStatus();
+            if (orderStatus < 5)
+                orderStatus++;
+            order.setOrderStatus(orderStatus);
+        }
+
+        return orderRepo.findById(orderId);
+    }
+
+
     // POST routes
     @PostMapping(value = "orders")
     public Order addOrder(@RequestBody Order order) {
         Order saved = orderRepo.save(order);
-        saved.setOrderId(1);
-        saved.setOrderStatus(2);
 
         String obj = "{";
         obj += "\n  type: " + "newOrder" + ",";
