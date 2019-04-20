@@ -25,6 +25,11 @@ public class OrderController {
         return orderRepo.findAll();
     }
 
+    @GetMapping(value = "orders/{userId}/{restId}")
+    public List<Order> getOrderByUserIdAndRestId(@PathVariable("userId") int userId, @PathVariable("restId") int restId) {
+        return orderRepo.findOrdersByUserIdAndRestId(userId,restId);
+    }
+
     @GetMapping(value = "orders/{orderId}")
     public Optional<Order> getOrderById(@PathVariable("orderId") int orderId) {
         return orderRepo.findById(orderId);
