@@ -53,9 +53,9 @@ public class OrderController {
         Order saved = orderRepo.save(order);
 
         String obj = "{";
-        obj += "\n  type: " + "newOrder" + ",";
-        obj += "\n  orderId: " + saved.getOrderId() + ",";
-        obj += "\n  orderStatus: " + saved.getOrderStatus();
+        obj += "\n  \"type\": " + "\"order\"" + ",";
+        obj += "\n  \"orderId\": " + "\"" + saved.getOrderId() + "\"" +  ",";
+        obj += "\n  \"orderStatus\": " + "\"" + saved.getOrderStatus() + "\"";
         obj += "\n}";
 
         this.webSocket.convertAndSend("/topic/all", obj);
@@ -71,7 +71,15 @@ public class OrderController {
             return ResponseEntity.notFound().build();
 
         order.setOrderId(orderId);
-        orderRepo.save(order);
+        Order saved = orderRepo.save(order);
+
+        String obj = "{";
+        obj += "\n  \"type\": " + "\"order\"" + ",";
+        obj += "\n  \"orderId\": " + "\"" + saved.getOrderId() + "\"" +  ",";
+        obj += "\n  \"orderStatus\": " + "\"" + saved.getOrderStatus() + "\"";
+        obj += "\n}";
+
+        this.webSocket.convertAndSend("/topic/all", obj);
 
         return ResponseEntity.ok(order);
     }

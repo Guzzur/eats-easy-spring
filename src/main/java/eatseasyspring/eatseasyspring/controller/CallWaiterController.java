@@ -5,6 +5,7 @@ import eatseasyspring.eatseasyspring.model.CallWaiter;
 import eatseasyspring.eatseasyspring.repository.CallWaiterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RestController
 public class CallWaiterController {
+    @Autowired
+    private SimpMessagingTemplate webSocket;
+
     @Autowired
     private CallWaiterRepo callWaiterRepo;
 
@@ -26,7 +30,16 @@ public class CallWaiterController {
     // POST routes
     @PostMapping(value = "callwaiter")
     public CallWaiter addWaiterCall(@RequestBody CallWaiter callWaiter) {
-        return callWaiterRepo.save(callWaiter);
+        CallWaiter saved = callWaiterRepo.save(callWaiter);
+
+        String obj = "{";
+        obj += "\n  \"type\": " + "\"callWaiter\"" + ",";
+        obj += "\n  \"callId\": " + "\"" + saved.getCallId() + "\"" +  ",";
+        obj += "\n  \"reason\": " + "\"" + saved.getReason() + "\"";
+        obj += "\n}";
+
+        this.webSocket.convertAndSend("/topic/all", obj);
+        return saved;
     }
 
     // PUT routes
