@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepo extends JpaRepository<Order, Integer> {
     List<Order> findOrdersByRestId(int restId);
+
+    List<Order> findOrdersByUserIdAndRestId(int userId, int restId);
 }
