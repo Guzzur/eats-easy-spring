@@ -26,6 +26,17 @@ public class Restaurant {
     @Column(name = "rest_type")
     private String restTypes;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public int getRestaurantId() {
         return restaurantId;
     }
