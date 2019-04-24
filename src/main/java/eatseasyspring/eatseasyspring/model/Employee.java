@@ -7,8 +7,7 @@ import java.sql.Date;
 @Table(name = "employees")
 public class Employee {
     @Id
-    @SequenceGenerator(name = "employees_employee_id_gen", sequenceName = "employees_employee_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employees_employee_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private int employeeId;
 

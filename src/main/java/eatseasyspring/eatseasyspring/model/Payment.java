@@ -8,8 +8,7 @@ package eatseasyspring.eatseasyspring.model;
 @Table(name = "payments")
 public class Payment {
     @Id
-    @SequenceGenerator(name = "payments_payment_id_gen", sequenceName = "payments_payment_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payments_payment_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private int paymentId;
 

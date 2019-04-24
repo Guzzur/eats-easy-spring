@@ -7,8 +7,7 @@ import javax.persistence.Table;
 @Table(name = "Users")
 public class User {
     @Id
-    @SequenceGenerator(name="users_user_id_gen", sequenceName="users_user_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="users_user_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userID;
 

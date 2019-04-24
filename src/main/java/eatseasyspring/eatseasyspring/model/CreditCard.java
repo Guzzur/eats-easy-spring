@@ -9,8 +9,7 @@ package eatseasyspring.eatseasyspring.model;
 @Table(name = "credit_cards")
 public class CreditCard {
     @Id
-    @SequenceGenerator(name = "credit_cards_card_id_gen", sequenceName = "credit_cards_card_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credit_cards_card_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_id")
     private int cardId;
 

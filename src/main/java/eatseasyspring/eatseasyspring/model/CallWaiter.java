@@ -7,8 +7,7 @@ package eatseasyspring.eatseasyspring.model;
 @Table(name = "calls_for_waiter")
 public class CallWaiter {
     @Id
-    @SequenceGenerator(name = "calls_for_waiter_call_id_gen", sequenceName = "calls_for_waiter_call_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calls_for_waiter_call_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "call_id")
     private int callId;
 

@@ -7,8 +7,7 @@ package eatseasyspring.eatseasyspring.model;
 @Table(name = "roles")
 public class Role {
     @Id
-    @SequenceGenerator(name = "roles_role_id_gen", sequenceName = "roles_role_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_role_id_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private int roleId;
 
