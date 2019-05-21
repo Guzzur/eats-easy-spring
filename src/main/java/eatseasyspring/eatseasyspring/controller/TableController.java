@@ -1,5 +1,6 @@
 package eatseasyspring.eatseasyspring.controller;
 
+
 import eatseasyspring.eatseasyspring.model.TableClass;
 import eatseasyspring.eatseasyspring.repository.TableRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,14 @@
 package eatseasyspring.eatseasyspring.controller;
 
 
-        import eatseasyspring.eatseasyspring.model.Role;
-        import eatseasyspring.eatseasyspring.repository.RoleRepo;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
+import eatseasyspring.eatseasyspring.model.Role;
+import eatseasyspring.eatseasyspring.repository.RoleRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
-        import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")

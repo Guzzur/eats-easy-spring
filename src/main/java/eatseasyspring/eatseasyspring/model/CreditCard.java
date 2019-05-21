@@ -1,9 +1,8 @@
 package eatseasyspring.eatseasyspring.model;
 
 
-
-        import javax.persistence.*;
-        import java.util.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "credit_cards")

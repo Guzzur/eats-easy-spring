@@ -1,5 +1,6 @@
 package eatseasyspring.eatseasyspring.model;
 
+
 public class WhoAmI {
     private int majorApiVersion;
     private int minorApiVersion;

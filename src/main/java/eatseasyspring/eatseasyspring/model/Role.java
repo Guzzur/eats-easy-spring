@@ -1,7 +1,8 @@
 package eatseasyspring.eatseasyspring.model;
 
-        import javax.persistence.*;
-        import java.sql.Date;
+
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "roles")

@@ -1,5 +1,6 @@
 package eatseasyspring.eatseasyspring.util;
 
+
 public class CustomErrorType {
     private String errorMessage;
 
